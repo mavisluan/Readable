@@ -24,10 +24,8 @@ class PostDetails extends Component {
         const {id, author, title, body, voteScore, timestamp  } = this.props.post
         const { comments } = this.props
         const { showEdit} = this.state
-
-        console.log(this.props)
         const commentsNotDeleted = comments.filter(comment => comment.deleted === false )
-        
+
         return (
             <div>
                 <div className='post'>
