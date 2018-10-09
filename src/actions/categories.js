@@ -10,5 +10,5 @@ export const fetchCategories = () => dispatch => (
     API.fetchCategories()
         .then(categories => 
             dispatch(loadCategories(categories))
-            )
+        )
 )
