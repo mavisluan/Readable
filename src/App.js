@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import SideBar from './SideBar'
 
 class App extends Component {
-
   render() {
     return (
       <Router>
