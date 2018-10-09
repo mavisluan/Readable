@@ -9,9 +9,14 @@ class App extends Component {
   }
   
   render() {
+    const { categories } = this.props
     return (
-      <div className="App">
-     
+      <div >
+        {categories && categories.map(category => (
+          <li key={category.path}>
+            {category.name}
+          </li>
+        ))}
       </div>
     );
   }
