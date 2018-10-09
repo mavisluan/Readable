@@ -9,8 +9,6 @@ class App extends Component {
   }
   
   render() {
-    console.log(this.props.categories)
-
     return (
       <div className="App">
      
