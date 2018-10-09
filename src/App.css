@@ -1,32 +1,166 @@
 .App {
-  text-align: center;
+  display: flex;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.App > div {
+  padding-top: 20px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.side-bar {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-left: 30px;
+  margin-right: 30px;
+  min-width: 180px;
+  min-height: 1000px;
+  background-color:orange;
 }
 
-.App-link {
-  color: #61dafb;
+.side-bar a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.side-bar a:hover {
+  cursor: pointer;
+  color: black;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.sort-control button {
+  text-align: center;
+  border: 2px solid lightblue;
+  border-radius: 5px;
+  margin-right: 10px;
+  outline: none;
+  font-size: 14px;
+  background-color: lightcyan;
+}
+
+.sort-control button:hover {
+  cursor: pointer;
+  color: gray
+}
+
+.posts {
+  margin-top: 10px;
+}
+
+
+/* Post */
+.post {
+  min-width: 600px;
+  min-height: 40px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 10px 20px 20px 20px;
+  border: 2px solid lightgray;
+}
+
+.post > div {
+  padding-top: 5px;
+}
+
+.middle {
+  color: gray;
+  font-size: 14px;
+  font-style: italic
+}
+
+.bottom {
+  display: flex;
+  width: 400px;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.bottom span {
+  margin-left: 5px;
+}
+
+.bottom span:hover {
+  cursor: pointer;
+  color: gray
+}
+
+
+/* new-post Post && new-post Comment */
+.new-post {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-post div {
+  display: flex;
+  margin: 10px;
+}
+
+.new-post span {
+  min-width: 80px;
+}
+
+.new-post input {
+  font-size: 14px;
+  min-width: 200px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+}
+
+.new-post button {
+  text-align: center;
+  margin-left: 40px;
+  border: 2px solid lightblue;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  background-color: lightcyan;
+}
+
+.new-post select {
+  font-size: 16px;
+  min-width: 100px;
+  outline: none
+}
+
+.new-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.new-comment input {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+  font-size: 14px
+}
+
+.new-comment textarea {
+  margin-bottom: 10px;
+  border-radius: 10px;
+  min-width: 200px;
+  font-size: 14px
+}
+
+.new-comment button {
+  text-align: center;
+  border: 2px solid lightblue;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  background-color: lightcyan;
+}
+
+.comments li {
+  margin-top: 20px
+}
+
+.comment-buttons {
+  display: flex
 }
