@@ -15,7 +15,6 @@ class PostsList extends Component {
         ? postsNotDeleted
         : postsNotDeleted.filter(post => post.category === category)
 
-        console.log(this.props)
         return (
             <div className='board'>
                 <div className='sort-control'>
