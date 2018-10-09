@@ -1,4 +1,6 @@
 {
     "scm.alwaysShowProviders": true,
-    "scm.alwaysShowActions": true
+    "scm.alwaysShowActions": true,
+    "editor.fontSize": 14,
+    "editor.wordWrap": "on"
 }
