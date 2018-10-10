@@ -17,6 +17,7 @@ class PostControl extends Component {
     
     render() {
         const { voteScore, commentCount, id } = this.props.post
+        console.log(voteScore)
         return (
             <div className='bottom'>
                 <div>
