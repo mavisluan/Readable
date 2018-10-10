@@ -1,34 +1,24 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PostControl from './postControl'
 
-const Post = ({ post: {id, category, title, author, timestamp, voteScore, commentCount }, onDeletePost}) => {
+const Post = ({ post }) => {
     return (
         <div className='post' >
-            <div style={{ fontSize: '20px', fontWeight: 'bold',}}>{category}</div>
+            <div style={{ fontSize: '20px', fontWeight: 'bold',}}>{post.category}</div>
             <div className='top'>
-                <Link to={`/${category}/${id}`}>
+                <Link to={`/${post.category}/${post.id}`}>
                     <span>
-                        {title}
+                        {post.title}
                     </span>
                 </Link>
             </div>
             <div className='middle'>
-                written by {author} • {new Date(timestamp).toString().substr(0,21)}
+                written by {post.author} • {new Date(post.timestamp).toString().substr(0,21)}
             </div>
-            <div className='bottom'>
-                <div>
-                    {voteScore} 
-                    <span ><i className="far fa-thumbs-up"></i></span>
-                    <span ><i className="far fa-thumbs-down"></i></span>
-                </div>
-                <div>{commentCount} comments</div>
-                <Link to={`/edit/${id}`}>
-                    <i className="far fa-edit">Edit</i>
-                </Link>
-                <span onClick={() => onDeletePost(id)}>
-                    <i className="far fa-trash-alt">Delete</i>
-                </span>
-            </div>
+            <PostControl 
+               post={post}
+            />
         </div>
     )
 } 
