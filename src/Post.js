@@ -17,13 +17,17 @@ const Post = ({ post: {id, category, title, author, timestamp, voteScore, commen
             </div>
             <div className='bottom'>
                 <div>
-                    {voteScore}
+                    {voteScore} 
                     <span ><i className="far fa-thumbs-up"></i></span>
                     <span ><i className="far fa-thumbs-down"></i></span>
                 </div>
                 <div>{commentCount} comments</div>
-                <Link to={`/edit/${id}`}><i className="far fa-edit">Edit</i></Link>
-                <span onClick={() => onDeletePost(id)}><i className="far fa-trash-alt"></i>Delete</span>
+                <Link to={`/edit/${id}`}>
+                    <i className="far fa-edit">Edit</i>
+                </Link>
+                <span onClick={() => onDeletePost(id)}>
+                    <i className="far fa-trash-alt">Delete</i>
+                </span>
             </div>
         </div>
     )
