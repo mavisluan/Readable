@@ -22,12 +22,11 @@ class PostsList extends Component {
         ? showingPosts.sort((a, b) => a[sortBy] - b[sortBy])
         : showingPosts.sort((a, b) => b[sortBy] - a[sortBy])
 
-        console.log(this.props)
         return (
             <div className='board'>
                 <div className='sort-control'>
-                <button onClick={()=> this.props.sortPosts(!orderBy, 'timestamp')}>date</button>
-                <button onClick={() => this.props.sortPosts(!orderBy, 'voteScore')}>score</button>
+                    <button onClick={()=> this.props.sortPosts(!orderBy, 'timestamp')}>date</button>
+                    <button onClick={() => this.props.sortPosts(!orderBy, 'voteScore')}>score</button>
                 </div>
                 <div className='posts'>
                     { sortedPosts.length === 0 

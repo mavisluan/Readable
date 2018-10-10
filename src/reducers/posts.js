@@ -1,10 +1,16 @@
 import { LOAD_POSTS } from '../actions/posts'
+import { LOAD_NEW_POST } from '../actions/post'
 
 const posts = ( state = [], action ) => {
-    const { posts } = action 
+    const { posts, post } = action 
     switch (action.type) {
         case LOAD_POSTS:
             return posts
+
+        case LOAD_NEW_POST:
+            return [
+                ...state, post
+            ]
         default:
             return state
     }

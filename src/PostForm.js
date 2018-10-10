@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { addPost, updatePost } from './actions/post'
+import serializeForm from 'form-serialize'
 
 class PostForm extends Component {
     state = {
@@ -8,6 +10,17 @@ class PostForm extends Component {
         body: '',
         category: 'react'
     }
+    
+    updateState = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+ 
+    clearState = () => this.setState({ 
+        author: '',
+        title: '',
+        body: '',
+        category: ''
+    })
 
     componentDidMount() {
         const { postId } = this.props.match.params   
@@ -18,29 +31,39 @@ class PostForm extends Component {
         } 
     }
 
-    updateState = (e) => {
-        this.setState({[e.target.name]: e.target.value})
-     }
- 
-     clearState = () => this.setState({ 
-         author: '',
-         title: '',
-         body: '',
-         category: ''
-     })
- 
+    addPost = (e) => {
+        e.preventDefault()
+        let post = serializeForm( e.target, { hash: true })
+        post =  { ...post, ...this.createPost()}
+        this.props.addPost(post)
+    }
+
+    createPost = () => {
+        const uuid = require('uuid/v1')
+        const id = uuid()
+        const voteScore = 0
+        const deleted = false
+        const commentCount = 0
+        const timestamp = Date.now()
+        return ({ id, voteScore, deleted, commentCount, timestamp })
+    }
+
+    updatePost = ( e, postId) => {
+        e.preventDefault()
+        const object = serializeForm( e.target, { hash: true })
+        let post = this.props.posts.find(post => post.id === postId)
+        post = { ...post, ...object, timestamp: Date.now()}
+        this.props.updatePost(post)   
+    }
 
     render() {
-        const { categories, onAddPost, onUpdatePost, history} = this.props
+        const { categories, history} = this.props
         const { author, title, body, category } = this.state
         const { postId } = this.props.match.params
 
         const onSubmit = (postId) 
-            ? (e) => onUpdatePost(e, postId)
-            : (e) => onAddPost(e)
-
-        console.log(this.props.match.params)
-        console.log(this.props.posts)
+            ? (e) => this.updatePost(e, postId)
+            : (e) => this.addPost(e)
         const header = postId ? 'Edit Post' : 'New Post'
         const button = postId ? 'save' : 'submit' 
 
@@ -111,4 +134,4 @@ class PostForm extends Component {
 
 const mapStateToProps = ({ categories, posts }) => ({ categories, posts })
 
-export default connect(mapStateToProps)(PostForm)
+export default connect(mapStateToProps, { addPost, updatePost })(PostForm)
