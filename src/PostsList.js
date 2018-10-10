@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPosts } from './actions/posts'
 import { sortPosts } from './actions/sort'
+import { removePost } from './actions/post'
 import Post from './Post'
 
 class PostsList extends Component {
@@ -9,6 +10,10 @@ class PostsList extends Component {
       this.props.fetchPosts()
     }
 
+    deletePost = (postId) => {
+        const post = this.props.posts.find(post => post.id === postId)
+        this.props.removePost(post)
+    }
     render() {
         const postsNotDeleted = this.props.posts.filter( post => post.deleted === false)
         const { category } = this.props.match.params 
@@ -32,7 +37,7 @@ class PostsList extends Component {
                     { sortedPosts.length === 0 
                     ? <h3>No Post</h3>
                     : sortedPosts.map(post => (
-                        <Post post={post} key={post.id}/>
+                        <Post post={post} key={post.id} onDeletePost={this.deletePost}/>
                      ))
                     }
                 </div>
@@ -42,4 +47,4 @@ class PostsList extends Component {
 }
 
 const mapStateToProps = ({ posts, sort }) => ({ posts, sort })
-export default connect (mapStateToProps, {fetchPosts, sortPosts})(PostsList)
+export default connect (mapStateToProps, {fetchPosts, sortPosts, removePost })(PostsList)

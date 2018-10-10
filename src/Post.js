@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Post = ({ post: {id, category, title, author, timestamp, voteScore, commentCount, children }}) => {
+const Post = ({ post: {id, category, title, author, timestamp, voteScore, commentCount }, onDeletePost}) => {
     return (
         <div className='post' >
             <div style={{ fontSize: '20px', fontWeight: 'bold',}}>{category}</div>
@@ -11,7 +11,6 @@ const Post = ({ post: {id, category, title, author, timestamp, voteScore, commen
                         {title}
                     </span>
                 </Link>
-                {children}
             </div>
             <div className='middle'>
                 written by {author} • {new Date(timestamp).toString().substr(0,21)}
@@ -24,7 +23,7 @@ const Post = ({ post: {id, category, title, author, timestamp, voteScore, commen
                 </div>
                 <div>{commentCount} comments</div>
                 <Link to={`/edit/${id}`}><i className="far fa-edit">Edit</i></Link>
-                <span ><i className="far fa-trash-alt"></i>Delete</span>
+                <span onClick={() => onDeletePost(id)}><i className="far fa-trash-alt"></i>Delete</span>
             </div>
         </div>
     )

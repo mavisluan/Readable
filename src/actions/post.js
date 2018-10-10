@@ -29,3 +29,13 @@ export const addPost = (post) => dispatch => (
         .then(post => dispatch(loadNewPost(post)))
 )
 
+export const DELETE_POST = 'DELETE_POST'
+export const deletePost = (post) => ({
+    type:  DELETE_POST,
+    post
+})
+
+export const removePost = (post) => dispatch => (
+    API.deletePost(post.id)
+        .then(dispatch(deletePost(post)))
+)
