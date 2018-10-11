@@ -11,19 +11,20 @@ class PostControl extends Component {
         this.props.removePost(post)
     }
 
-    postVote = (id, option, type) => {
-        this.props.postVote(id, option, type)
+    postVote = (post, option, type) => {
+        this.props.postVote(post, option, type)
     }
     
     render() {
-        const { voteScore, commentCount, id } = this.props.post
-        const { history } = this.props
+        const { voteScore, id } = this.props.post
+        const { post, history, commentCount } = this.props
+        
         return (
             <div className='bottom'>
                 <div>
                     {voteScore} 
-                    <span onClick={() => this.postVote(id, 'upVote', 'posts')}><i className="far fa-thumbs-up"></i></span>
-                    <span onClick={() => this.postVote(id, 'downVote', 'posts')}><i className="far fa-thumbs-down"></i></span>
+                    <span onClick={() => this.postVote(post, 'upVote', 'posts')}><i className="far fa-thumbs-up"></i></span>
+                    <span onClick={() => this.postVote(post, 'downVote', 'posts')}><i className="far fa-thumbs-down"></i></span>
                 </div>
                 <div>{commentCount} comments</div>
                 <Link to={`/edit/${id}`}>
@@ -40,6 +41,6 @@ class PostControl extends Component {
     }
 }
 
-const mapStateToProps = ({ posts, vote }) => ({ posts, vote })
+const mapStateToProps = ({ posts, comments, vote }) => ({ posts, comments, vote })
 
 export default connect(mapStateToProps, {removePost, postVote})(PostControl)

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import CommentForm from './CommentForm'
+import CommentControl from './CommentControl'
 import { connect } from 'react-redux'
-import { removeComment } from './actions/comments'
 
 class CommentsList extends Component {
     state ={
@@ -13,7 +13,7 @@ class CommentsList extends Component {
     cancelEdit = () => this.setState({ showEdit: false })
 
     render() {
-        const { comments, parentId, removeComment } = this.props
+        const { comments, parentId } = this.props
         const { showEdit, comment} = this.state
         return (
             <div style={{marginLeft: '30px'}} className='comments'>
@@ -28,15 +28,10 @@ class CommentsList extends Component {
                                 <div className='middle'>
                                     written by {comment.author} • {new Date(comment.timestamp).toString().substr(0,21)}
                                 </div>
-                                <div className='bottom'>
-                                    <div>
-                                        {comment.voteScore}
-                                        <span><i className="far fa-thumbs-up"></i></span>
-                                        <span><i className="far fa-thumbs-down"></i></span>
-                                    </div>
-                                    <span onClick={()=> this.setEdit(comment)}><i className="far fa-edit">Edit</i></span>
-                                    <span onClick={() => removeComment(comment)}><i className="far fa-trash-alt"></i>Delete</span>
-                                </div>
+                                <CommentControl 
+                                    setEdit={this.setEdit}
+                                    comment={comment}
+                                />
                             </li>                   
                         )): 
                         <CommentForm 
@@ -56,4 +51,4 @@ class CommentsList extends Component {
 
 const mapStateToProps = ({ post, comments }) => ({  post, comments  })
 
-export default connect(mapStateToProps, { removeComment,  })(CommentsList)
+export default connect(mapStateToProps)(CommentsList)

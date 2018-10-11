@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchComments } from './actions/comments'
 import { fetchPost } from './actions/post'
@@ -30,6 +29,7 @@ class PostDetails extends Component {
                     </div>
                     <PostControl 
                         post={this.props.post}
+                        commentCount={commentsNotDeleted.length}
                         history={this.props.history}
                     />
                 </div>
