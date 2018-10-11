@@ -4,7 +4,7 @@ import { fetchComments } from './actions/comments'
 import { fetchPost } from './actions/post'
 import CommentsList from './CommentsList'
 import CommentForm from './CommentForm'
-import PostControl from './PostControl'
+import PostControl from  './PostControl'
 
 class PostDetails extends Component { 
     componentDidMount = () => {
@@ -14,9 +14,9 @@ class PostDetails extends Component {
     }   
 
     render() {      
-        const {id, author, title, body, timestamp  } = this.props.post
+        const {id, author, title, body, timestamp } = this.props.post
         const commentsNotDeleted = this.props.comments.filter(comment => comment.deleted === false )
-   
+        
         return (
             <div>
                 <div className='post'>
@@ -45,4 +45,4 @@ class PostDetails extends Component {
 
 const mapStateToProps = ({  post, comments }) => ({ post, comments })
 
-export default connect(mapStateToProps, {fetchComments, fetchPost})(PostDetails)
+export default connect(mapStateToProps, {fetchComments, fetchPost })(PostDetails)

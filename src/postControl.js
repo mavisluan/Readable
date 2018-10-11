@@ -11,20 +11,21 @@ class PostControl extends Component {
         this.props.removePost(post)
     }
 
-    postVote = (post, option, type) => {
-        this.props.postVote(post, option, type)
+    postVote = ( id, option, type ) => {
+        this.props.postVote(id, option, type)
+        this.props.post.voteScore = this.props.vote[id]
     }
-    
+
     render() {
-        const { voteScore, id } = this.props.post
-        const { post, history, commentCount } = this.props
-        
+        const { id } = this.props.post
+        const { history, commentCount, vote } = this.props
+        const voteScore = vote[id] ? vote[id] : this.props.post.voteScore
         return (
             <div className='bottom'>
                 <div>
                     {voteScore} 
-                    <span onClick={() => this.postVote(post, 'upVote', 'posts')}><i className="far fa-thumbs-up"></i></span>
-                    <span onClick={() => this.postVote(post, 'downVote', 'posts')}><i className="far fa-thumbs-down"></i></span>
+                    <span onClick={() => this.postVote(id, 'upVote', 'posts')}><i className="far fa-thumbs-up"></i></span>
+                    <span onClick={() => this.postVote(id, 'downVote', 'posts')}><i className="far fa-thumbs-down"></i></span>
                 </div>
                 <div>{commentCount} comments</div>
                 <Link to={`/edit/${id}`}>

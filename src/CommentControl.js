@@ -5,15 +5,14 @@ import { connect } from 'react-redux'
 
 class CommentControl extends Component {
 
-
     render() {
         const { setEdit, comment, removeComment,  postVote } = this.props
         return (
             <div className='bottom'>
                 <div>
                     {comment.voteScore}
-                    <span onClick={() => postVote(comment, 'upVote', 'comments')}><i className="far fa-thumbs-up"></i></span>
-                    <span><i className="far fa-thumbs-down"></i></span>
+                    <span onClick={() => postVote(comment.id, 'upVote', 'comments')}><i className="far fa-thumbs-up"></i></span>
+                    <span onClick={() => postVote(comment.id, 'downVote', 'comments')}><i className="far fa-thumbs-down"></i></span>
                 </div>
                 <span onClick={()=> setEdit(comment)}><i className="far fa-edit">Edit</i></span>
                 <span onClick={() => removeComment(comment)}><i className="far fa-trash-alt"></i>Delete</span>

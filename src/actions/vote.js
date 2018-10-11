@@ -1,12 +1,12 @@
 import * as API from '../utils/API'
 export const VOTE = 'VOTE'
-export const vote = ( item, score ) => ({
+export const vote = ( id, score ) => ({
     type: VOTE,
-    item, 
+    id, 
     score
 })
 
-export const postVote = (item, option, type) => dispatch => (
-    API.vote(item.id, option, type)
-        .then(item => dispatch(vote(item, item.voteScore)))
+export const postVote = (id, option, type) => dispatch => (
+    API.vote(id, option, type)
+        .then(item => dispatch(vote(item.id, item.voteScore)))
 )

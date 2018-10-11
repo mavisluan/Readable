@@ -1,10 +1,10 @@
 import { VOTE } from '../actions/vote'
 
 const vote = (state = {}, action ) => {
-    const { item, score } = action 
+    const { id, score } = action 
     switch(action.type) {
         case VOTE:
-            return { ...item, score }
+            return { [id]: score }
         default:
             return state
     }

@@ -2,7 +2,7 @@ import { LOAD_COMMENTS, LOAD_NEW_COMMENT, LOAD_COMMENT, DELETE_COMMENT } from '.
 import { VOTE } from '../actions/vote'
 
 const comments = ( state = [], action ) => {
-    const { comments, comment, item, score } = action 
+    const { comments, comment, id, score } = action 
     switch( action.type ) {
         case LOAD_COMMENTS:
             return comments
@@ -15,7 +15,7 @@ const comments = ( state = [], action ) => {
             return state.filter(c => c.id !== comment.id)
         case VOTE:
             return state.map( c => {
-                if (c.id === item.id) {
+                if (c.id === id) {
                     c.voteScore = score
                 }
                 return c
