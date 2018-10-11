@@ -17,7 +17,7 @@ class PostControl extends Component {
     
     render() {
         const { voteScore, commentCount, id } = this.props.post
-        console.log(voteScore)
+        const { history } = this.props
         return (
             <div className='bottom'>
                 <div>
@@ -29,7 +29,10 @@ class PostControl extends Component {
                 <Link to={`/edit/${id}`}>
                     <i className="far fa-edit">Edit</i>
                 </Link>
-                <span onClick={() => this.deletePost(id)}>
+                <span onClick={() => {
+                    this.deletePost(id)
+                    history && history.push('/')
+                    }}>
                     <i className="far fa-trash-alt">Delete</i>
                 </span>
             </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import PostControl from './postControl'
+import PostControl from './PostControl'
 
 const Post = ({ post }) => (
     <div className='post' >

@@ -35,14 +35,6 @@ export const fetchCategoryPosts = (category) =>
       .then(res => res.json())
       .then(data => data)
 
-  
-// ONE POST
-const post = { 
-    id: 'uekghi184840w4r3',
-    body: 'this is a new post',
-    author: 'new user',
-    title: 'new post'
-}
 
 // --ADD New
 export const addPost = (post) => {
@@ -120,7 +112,7 @@ export const fetchAComment = ( commentId ) =>
 // -- Edit ONE comment
 export const updateComment = (comment ) => {
     const commentData = {
-        ...post,
+        ...comment,
         timestamp: Date.now()
     }
     return fetch(`${url}/comments/${comment.id}`, { 

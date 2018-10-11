@@ -6,7 +6,7 @@ const post = ( state = {}, action ) => {
         case LOAD_POST:
             return post
         case DELETE_POST:
-            return post
+            return { ...post, deleted: true}
         default:
             return state
     }
