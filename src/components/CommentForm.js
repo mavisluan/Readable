@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import serializeForm from 'form-serialize'
-import { addComment, updateComment } from './actions/comments'
+import { addComment, updateComment } from '../actions/comments'
 import { connect } from 'react-redux'
 
 class CommentForm extends Component {

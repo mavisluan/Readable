@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addPost, updatePost } from './actions/post'
+import { addPost, updatePost } from '../actions/post'
 import serializeForm from 'form-serialize'
 
 class PostForm extends Component {

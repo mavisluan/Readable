@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchCategories } from './actions/categories'
+import { fetchCategories } from '../actions/categories'
 import { Link } from 'react-router-dom'
 
 class SideBar extends Component {

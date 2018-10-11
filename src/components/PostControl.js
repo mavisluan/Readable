@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { removePost } from './actions/post'
-import { postVote } from './actions/vote'
+import { removePost } from '../actions/post'
+import { postVote } from '../actions/vote'
 
 class PostControl extends Component {
 

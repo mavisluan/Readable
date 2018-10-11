@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { postVote } from './actions/vote'
-import { removeComment } from './actions/comments'
+import { postVote } from '../actions/vote'
+import { removeComment } from '../actions/comments'
 import { connect } from 'react-redux'
 
 class CommentControl extends Component {

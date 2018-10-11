@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { fetchPosts } from './actions/posts'
-import { sortPosts } from './actions/sort'
+import { fetchPosts } from '../actions/posts'
+import { sortPosts } from '../actions/sort'
 import Post from './Post'
 
 class PostsList extends Component {
