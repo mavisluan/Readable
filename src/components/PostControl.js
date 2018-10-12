@@ -5,16 +5,9 @@ import { removePost } from '../actions/post'
 import { postVote } from '../actions/vote'
 
 class PostControl extends Component {
-
-    deletePost = (postId) => {
-        const post = this.props.posts.find(post => post.id === postId)
-        this.props.removePost(post)
-    }
-
-
     render() {
         const { id, voteScore } = this.props.post
-        const { history, commentCount, vote, postVote } = this.props
+        const { history, commentCount, vote, postVote, removePost, post } = this.props
         
         const score = vote[id] ? vote[id] : voteScore
         return (
@@ -30,7 +23,7 @@ class PostControl extends Component {
                 </Link>
                 <span 
                     onClick={() => {
-                        this.deletePost(id)
+                        removePost(post)
                         history && history.push('/')
                     }}>
                     <i className="far fa-trash-alt">Delete</i>
@@ -40,6 +33,6 @@ class PostControl extends Component {
     }
 }
 
-const mapStateToProps = ({ posts, vote }) => ({ posts, vote })
+const mapStateToProps = ({ vote }) => ({ vote })
 
 export default connect(mapStateToProps, {removePost, postVote})(PostControl)
