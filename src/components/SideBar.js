@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 class SideBar extends Component {
     componentDidMount() {
         this.props.fetchCategories()
-      }
+    }
     
     render() {
         const { categories } = this.props
@@ -15,7 +15,7 @@ class SideBar extends Component {
             <div className='side-bar'>
                 <Link to='/' >All categories</Link>
                 <ul>
-                    {categories && categories.map(category => (
+                    {categories.map(category => (
                         <li key={category.name} >
                             <Link to={`/${category.name}`}>
                                 {category.name}

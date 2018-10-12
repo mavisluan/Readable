@@ -19,8 +19,8 @@ class CommentsList extends Component {
             <div style={{marginLeft: '30px'}} className='comments'>
                 <h3>Comments</h3>
                 <ul>
-                    { !showEdit ? 
-                        comments.map(comment => (
+                    { !showEdit 
+                      ? comments.map(comment => (
                             <li key={comment.id}>
                                 <div className='top'>
                                     <div>{comment.body}</div>
@@ -33,8 +33,8 @@ class CommentsList extends Component {
                                     comment={comment}
                                 />
                             </li>                   
-                        )): 
-                        <CommentForm 
+                        )) 
+                        : <CommentForm 
                             comment={comment}
                             parentId={parentId} 
                             hideEdit={this.cancelEdit}>
@@ -49,6 +49,6 @@ class CommentsList extends Component {
 }
 
 
-const mapStateToProps = ({ post, comments }) => ({  post, comments  })
+const mapStateToProps = ({ comments }) => ({ comments })
 
 export default connect(mapStateToProps)(CommentsList)

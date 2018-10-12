@@ -13,29 +13,33 @@ class PostDetails extends Component {
       this.props.fetchComments(postId)
     }   
 
-    render() {      
-        const {id, author, title, body, timestamp } = this.props.post
-        const commentsNotDeleted = this.props.comments.filter(comment => comment.deleted === false )
+    render() { 
+        const { post, comments, history } = this.props     
+        const {id, author, title, body, timestamp } = post
+        const commentsNotDeleted = comments.filter(comment => comment.deleted === false )
         
         return (
             <div>
                 <div className='post'>
                     <div className='top'>
-                        <div style={{ fontWeight: 'bold',}}>{title}</div>
+                        <div style={{ fontWeight: 'bold' }}>{title}</div>
                         <div>{body}</div>
                     </div>
                     <div className='middle'>
                         written by {author} • {new Date(timestamp).toString().substr(0,21)}
                     </div>
                     <PostControl 
-                        post={this.props.post}
+                        post={post}
                         commentCount={commentsNotDeleted.length}
-                        history={this.props.history}
+                        history={history}
                     />
                 </div>
                 {commentsNotDeleted.length === 0 
                     ? <CommentForm parentId={id} />
-                    : <CommentsList parentId={id} comments={commentsNotDeleted}/>
+                    : <CommentsList 
+                        parentId={id} 
+                        comments={commentsNotDeleted}
+                    />
                 }
             </div>
         )

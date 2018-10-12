@@ -11,29 +11,27 @@ class PostControl extends Component {
         this.props.removePost(post)
     }
 
-    postVote = ( id, option, type ) => {
-        this.props.postVote(id, option, type)
-        this.props.post.voteScore = this.props.vote[id]
-    }
 
     render() {
-        const { id } = this.props.post
-        const { history, commentCount, vote } = this.props
-        const voteScore = vote[id] ? vote[id] : this.props.post.voteScore
+        const { id, voteScore } = this.props.post
+        const { history, commentCount, vote, postVote } = this.props
+        
+        const score = vote[id] ? vote[id] : voteScore
         return (
             <div className='bottom'>
                 <div>
-                    {voteScore} 
-                    <span onClick={() => this.postVote(id, 'upVote', 'posts')}><i className="far fa-thumbs-up"></i></span>
-                    <span onClick={() => this.postVote(id, 'downVote', 'posts')}><i className="far fa-thumbs-down"></i></span>
+                    {score} 
+                    <span onClick={() => postVote(id, 'upVote', 'posts')}><i className="far fa-thumbs-up"></i></span>
+                    <span onClick={() => postVote(id, 'downVote', 'posts')}><i className="far fa-thumbs-down"></i></span>
                 </div>
                 <div>{commentCount} comments</div>
                 <Link to={`/edit/${id}`}>
                     <i className="far fa-edit">Edit</i>
                 </Link>
-                <span onClick={() => {
-                    this.deletePost(id)
-                    history && history.push('/')
+                <span 
+                    onClick={() => {
+                        this.deletePost(id)
+                        history && history.push('/')
                     }}>
                     <i className="far fa-trash-alt">Delete</i>
                 </span>
@@ -42,6 +40,6 @@ class PostControl extends Component {
     }
 }
 
-const mapStateToProps = ({ posts, comments, vote }) => ({ posts, comments, vote })
+const mapStateToProps = ({ posts, vote }) => ({ posts, vote })
 
 export default connect(mapStateToProps, {removePost, postVote})(PostControl)

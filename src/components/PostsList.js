@@ -18,6 +18,7 @@ class PostsList extends Component {
         : postsNotDeleted.filter(post => post.category === category)
         // sort posts by date or score
         const { orderBy, sortBy } = this.props.sort
+        const { sortPosts } = this.props
         const sortedPosts = (orderBy) 
         ? showingPosts.sort((a, b) => a[sortBy] - b[sortBy])
         : showingPosts.sort((a, b) => b[sortBy] - a[sortBy])
@@ -25,8 +26,8 @@ class PostsList extends Component {
         return (
             <div className='board'>
                 <div className='sort-control'>
-                    <button onClick={()=> this.props.sortPosts(!orderBy, 'timestamp')}>date</button>
-                    <button onClick={() => this.props.sortPosts(!orderBy, 'voteScore')}>score</button>
+                    <button onClick={()=> sortPosts(!orderBy, 'timestamp')}>date</button>
+                    <button onClick={() => sortPosts(!orderBy, 'voteScore')}>score</button>
                 </div>
                 <div className='posts'>
                     { sortedPosts.length === 0 

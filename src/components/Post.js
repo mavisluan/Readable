@@ -17,6 +17,7 @@ const Post = ({ post }) => (
         </div>
         <PostControl 
             post={post}
+            commentCount={post.commentCount}
         />
     </div>
 )

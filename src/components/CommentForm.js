@@ -9,6 +9,14 @@ class CommentForm extends Component {
         body: '',
     }
 
+    componentDidMount() {
+        const { comment } = this.props
+        if (comment) { 
+            const { author, body } = comment
+            this.setState({ author, body })
+        }
+    }
+
     updateState= (e) => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -17,14 +25,6 @@ class CommentForm extends Component {
         author: '',
         body: '',
     })
-
-    componentDidMount() {
-        const { comment } = this.props
-        if (comment) { 
-            const { author, body } = comment
-            this.setState({ author, body })
-        }
-    }
     
     addComment = (e, parentId) => {
         e.preventDefault()
