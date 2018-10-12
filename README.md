@@ -34,7 +34,7 @@ Users will be able to
 
 2.App
 
-- git clone https://github.com/mavisluan/Readable_project
+- git clone https://github.com/mavisluan/readable.git
 - cd Readable_project
 - npm install
 - npm start
