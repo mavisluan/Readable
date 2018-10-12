@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchComments } from '../actions/comments'
 import { fetchPost } from '../actions/post'
+import { fetchPosts } from '../actions/posts'
 import CommentsList from './CommentsList'
 import CommentForm from './CommentForm'
 import PostControl from  './PostControl'
@@ -11,6 +12,7 @@ class PostDetails extends Component {
       const { postId } = this.props.match.params
       this.props.fetchPost(postId)
       this.props.fetchComments(postId)
+      this.props.fetchPosts()
     }   
 
     render() { 
@@ -49,4 +51,4 @@ class PostDetails extends Component {
 
 const mapStateToProps = ({  post, comments }) => ({ post, comments })
 
-export default connect(mapStateToProps, {fetchComments, fetchPost })(PostDetails)
+export default connect(mapStateToProps, {fetchComments, fetchPost, fetchPosts })(PostDetails)
