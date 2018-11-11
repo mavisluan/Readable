@@ -27,8 +27,8 @@ Users will be able to
 
 1.API Server
 
-- cd reactnd-project-readable-starter/api-server
 - git clone https://github.com/udacity/reactnd-project-readable-starter.git
+- cd reactnd-project-readable-starter/api-server
 - npm install
 - node server
 
